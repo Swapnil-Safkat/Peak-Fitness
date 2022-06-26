@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night">
+<html lang="en" data-theme="corporate">
 
 <head>
   <meta charset="UTF-8">
@@ -10,25 +10,36 @@
   <title>Peak Fitness</title>
 </head>
 
-<body>
+<body class="min-h-screen">
   <header class="sticky top-0 z-20">
     <nav>
-      <div class="navbar bg-base-300 w-full px-10 py-4 ">
-        <div class="flex-1 w-2/3">
-          <button id="title" class="btn btn-ghost normal-case text-xl text-primary font-sherif">Peak Fitness</button>
+      <div class="flex flex-col md:flex-row navbar bg-accent w-full px-10 py-4 ">
+        <div class="w-full md:w-1/3">
+          <button id="title" class="btn btn-ghost text-black normal-case text-3xl font-mono font-sherif">Peak Fitness</button>
         </div>
-        <div class="w-1/3">
-          <div class="form-control w-full">
-            <input id="search-box" type="text" placeholder="Aaa..."
-              class="input input-bordered border-gray-200 rounded-lg" />
-          </div>
+        <div class="w-full md:w-2/3 flex flex-col md:flex-row justify-start items-start md:justify-end">
+          <button onclick="viewManager([true, false, false, false])" class="text-neutral text-lg mx-4 font-semibold">BMI</button>
+          <button onclick="viewManager([false, true, false, false])" class="text-neutral text-lg mx-4 font-semibold">BMR</button>
+          <button onclick="viewManager([false, false, true, false])" class="text-neutral text-lg mx-4 font-semibold">Ideal Weight</button>
+          <button onclick="viewManager([false, false, false, true])" class="text-neutral text-lg mx-4 font-semibold">Calorie</button>
         </div>
       </div>
     </nav>
   </header>
 
-  <main class="w-11/12 mx-auto mt-20 z-10">
-  
+  <main class="w-11/12 mx-auto mt-20 z-10 h-full">
+    <section id="section-bmi" class="block h-full bg-secondary p-10 rounded-2xl shadow-lg">
+      <h1 class="text-4xl font-bold">Calculate Your BMI</h1>
+    </section>
+    <section id="section-bmr" class="hidden h-full bg-secondary">
+      <h1 class="text-4xl font-bold">Calculate Your BMR</h1>
+    </section>
+    <section id="section-ideal-weight" class="hidden h-full bg-secondary">
+      <h1 class="text-4xl font-bold">Calculate Your IDEAL WEIGHT</h1>
+    </section>
+    <section id="section-calorie" class="block h-full bg-secondary">
+      <h1 class="text-4xl font-bold">Calculate Your CALORIE</h1>
+    </section>
   </main>
   <script src="app.js"></script>
 </body>
