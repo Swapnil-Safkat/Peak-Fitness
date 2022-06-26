@@ -15,22 +15,79 @@
     <nav>
       <div class="flex flex-col md:flex-row navbar bg-accent w-full px-10 py-4 ">
         <div class="w-full md:w-1/3">
-          <button id="title" class="btn btn-ghost text-black normal-case text-3xl font-mono font-sherif">Peak Fitness</button>
+          <button id="title" class="btn btn-ghost text-black normal-case text-3xl font-mono font-sherif">Peak
+            Fitness</button>
         </div>
         <div class="w-full md:w-2/3 flex flex-col md:flex-row justify-start items-start md:justify-end">
-          <button onclick="viewManager([true, false, false, false])" class="text-neutral text-lg mx-4 font-semibold">BMI</button>
-          <button onclick="viewManager([false, true, false, false])" class="text-neutral text-lg mx-4 font-semibold">BMR</button>
-          <button onclick="viewManager([false, false, true, false])" class="text-neutral text-lg mx-4 font-semibold">Ideal Weight</button>
-          <button onclick="viewManager([false, false, false, true])" class="text-neutral text-lg mx-4 font-semibold">Calorie</button>
+          <button onclick="viewManager([true, false, false, false])"
+            class="text-neutral text-lg mx-4 font-semibold">BMI</button>
+          <button onclick="viewManager([false, true, false, false])"
+            class="text-neutral text-lg mx-4 font-semibold">BMR</button>
+          <button onclick="viewManager([false, false, true, false])"
+            class="text-neutral text-lg mx-4 font-semibold">Ideal Weight</button>
+          <button onclick="viewManager([false, false, false, true])"
+            class="text-neutral text-lg mx-4 font-semibold">Calorie</button>
         </div>
       </div>
     </nav>
   </header>
 
-  <main class="w-11/12 mx-auto mt-20 z-10 h-full">
-    <section id="section-bmi" class="block h-full bg-secondary p-10 rounded-2xl shadow-lg">
-      <h1 class="text-4xl font-bold">Calculate Your BMI</h1>
+  <main class="w-11/12 mx-auto  z-10 h-full">
+    <section id="section-bmi" class="block h-full p-10">
+      <h1 class="text-4xl font-bold mb-10 text-center">Calculate Your BMI</h1>
+      <div class="flex flex-col md:flex-row w-full">
+        <div class=" form-control  w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
+          <!-- get age for bmi -->
+          <div class="w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-2/3">
+              <span class="w-28 font-semibold">Age</span>
+              <input id="bmi-age" type="number" placeholder="20" class="input input-bordered w-full" />
+            </label>
+            <h1 class="text-center w-1/3 font-semibold">Ages: 2-120</h1>
+          </div>
+          <!-- get gender for bmi -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 h-12  font-semibold">Gender</span>
+              <div class="w-full flex flex-row justify-center items-center">
+                <div class="w-full pl-4 flex justify-around">
+                  <div>
+                    <input type="radio" id="bmi-gender-male" name="bmi-gender">
+                    <label for="bmi-gender-male" class="font-semibold">Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="bmi-gender-female" name="bmi-gender">
+                    <label for="bmi-gender-female" class="font-semibold">Female</label>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <!-- get height for bmi -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-26  font-semibold">Height</span>
+              <input id="bmi-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" />
+              <input id="bmi-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" />
+            </label>
+          </div>
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 font-semibold">Weight</span>
+              <input id="bmi-weight" type="number" placeholder="kg" class="input input-bordered w-full" />
+            </label>
+          </div>
+          <button id="calculate-bmi" onclick="calculateBMI()"
+            class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate BMI</button>
+        </div>
+
+        <div class="w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">Your BMI: <span class="text-neutral">30</span> kg/m</h1>
+          <h1 class="text-lg mt-4 font-bold text-seconday text-center">You BMI is Normal as per WHO recommended</h1>
+        </div>
+      </div>
     </section>
+
     <section id="section-bmr" class="hidden h-full bg-secondary">
       <h1 class="text-4xl font-bold">Calculate Your BMR</h1>
     </section>

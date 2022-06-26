@@ -21,3 +21,9 @@ const viewManager = (view) => {
   };
 };
 viewManager([true, false, false, false])
+
+const calculateBMI = ()=>{
+  const bmiHeightFeet = document.getElementById('bmi-height-feet').value;
+  console.log(bmiHeightFeet);
+return ;
+};
