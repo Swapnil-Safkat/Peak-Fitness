@@ -68,22 +68,24 @@
             <label class="input-group my-2 w-full">
               <span class="w-26  font-semibold">Height</span>
               <input id="bmi-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" />
-              <input id="bmi-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" />
+              <input id="bmi-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" value="4"/>
             </label>
           </div>
+          <!-- get bmi weight -->
           <div class=" w-full flex flex-row justify-center items-center">
             <label class="input-group my-2 w-full">
               <span class="w-24 font-semibold">Weight</span>
               <input id="bmi-weight" type="number" placeholder="kg" class="input input-bordered w-full" />
             </label>
           </div>
+          <h1 id="bmi-error" class="text-red-600 text-sm font-semibold"></h1>
           <button id="calculate-bmi" onclick="calculateBMI()"
             class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate BMI</button>
         </div>
 
-        <div class="w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 flex flex-col justify-center items-center">
-          <h1 class="text-2xl font-bold text-seconday">Your BMI: <span class="text-neutral">30</span> kg/m</h1>
-          <h1 class="text-lg mt-4 font-bold text-seconday text-center">You BMI is Normal as per WHO recommended</h1>
+        <div id="bmi-result" class="w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">Your BMI: <span  id="place-bmi" class="text-neutral">30</span> kg/m</h1>
+          <h1 id="category-bmi" class="text-lg mt-4 font-bold text-seconday text-center">You BMI is Normal as per WHO recommended</h1>
         </div>
       </div>
     </section>
