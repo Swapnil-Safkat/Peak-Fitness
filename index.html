@@ -36,7 +36,7 @@
     <section id="section-bmi" class="block h-full p-10">
       <h1 class="text-4xl font-bold mb-10 text-center">Calculate Your BMI</h1>
       <div class="flex flex-col md:flex-row w-full">
-        <div class=" form-control  w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
+        <div class=" form-control w-full md:w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
           <!-- get age for bmi -->
           <div class="w-full flex flex-row justify-center items-center">
             <label class="input-group my-2 w-2/3">
@@ -52,7 +52,7 @@
               <div class="w-full flex flex-row justify-center items-center">
                 <div class="w-full pl-4 flex justify-around">
                   <div>
-                    <input type="radio" id="bmi-gender-male" name="bmi-gender">
+                    <input type="radio" id="bmi-gender-male" name="bmi-gender" checked>
                     <label for="bmi-gender-male" class="font-semibold">Male</label>
                   </div>
                   <div>
@@ -67,7 +67,7 @@
           <div class=" w-full flex flex-row justify-center items-center">
             <label class="input-group my-2 w-full">
               <span class="w-26  font-semibold">Height</span>
-              <input id="bmi-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" />
+              <input id="bmi-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" value="5"/>
               <input id="bmi-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" value="4"/>
             </label>
           </div>
@@ -75,7 +75,7 @@
           <div class=" w-full flex flex-row justify-center items-center">
             <label class="input-group my-2 w-full">
               <span class="w-24 font-semibold">Weight</span>
-              <input id="bmi-weight" type="number" placeholder="kg" class="input input-bordered w-full" />
+              <input id="bmi-weight" type="number" placeholder="kg" class="input input-bordered w-full" value="70"/>
             </label>
           </div>
           <h1 id="bmi-error" class="text-red-600 text-sm font-semibold"></h1>
@@ -83,21 +83,174 @@
             class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate BMI</button>
         </div>
 
-        <div id="bmi-result" class="w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 flex flex-col justify-center items-center">
-          <h1 class="text-2xl font-bold text-seconday">Your BMI: <span  id="place-bmi" class="text-neutral">30</span> kg/m</h1>
+        <div id="bmi-result" class="w-full md:w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 mt-6 md:mt-0 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">Your BMI: <span  id="place-bmi" class="text-neutral">_</span> kg/m</h1>
           <h1 id="category-bmi" class="text-lg mt-4 font-bold text-seconday text-center">You BMI is Normal as per WHO recommended</h1>
         </div>
       </div>
     </section>
 
-    <section id="section-bmr" class="hidden h-full bg-secondary">
-      <h1 class="text-4xl font-bold">Calculate Your BMR</h1>
+    <section id="section-bmr" class="block h-full p-10">
+      <h1 class="text-4xl font-bold mb-10 text-center">Calculate Your BMR</h1>
+      <div class="flex flex-col md:flex-row w-full">
+        <div class=" form-control w-full md:w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
+          <!-- get age for bmr -->
+          <div class="w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-2/3">
+              <span class="w-28 font-semibold">Age</span>
+              <input id="bmr-age" type="number" placeholder="20" class="input input-bordered w-full" />
+            </label>
+            <h1 class="text-center w-1/3 font-semibold">Ages: 2-120</h1>
+          </div>
+          <!-- get gender for bmr -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 h-12  font-semibold">Gender</span>
+              <div class="w-full flex flex-row justify-center items-center">
+                <div class="w-full pl-4 flex justify-around">
+                  <div>
+                    <input type="radio" id="bmr-gender-male" name="bmi-gender" checked>
+                    <label for="bmr-gender-male" class="font-semibold">Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="bmr-gender-female" name="bmi-gender">
+                    <label for="bmr-gender-female" class="font-semibold">Female</label>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <!-- get height for bmr -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-26  font-semibold">Height</span>
+              <input id="bmr-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" value='5'/>
+              <input id="bmr-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" value="4"/>
+            </label>
+          </div>
+          <!-- get bmi weight -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 font-semibold">Weight</span>
+              <input id="bmr-weight" type="number" placeholder="kg" class="input input-bordered w-full" value='70'/>
+            </label>
+          </div>
+          <h1 id="bmr-error" class="text-red-600 text-sm font-semibold"></h1>
+          <button id="calculate-bmr" onclick="calculateBMR()"
+            class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate BMR</button>
+        </div>
+
+        <div id="bmr-result" class="w-full md:w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 mt-6 md:mt-0 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">Your BMR: <span  id="place-bmr" class="text-neutral">_</span> Calories/day</h1>
+        </div>
+      </div>
     </section>
-    <section id="section-ideal-weight" class="hidden h-full bg-secondary">
-      <h1 class="text-4xl font-bold">Calculate Your IDEAL WEIGHT</h1>
+
+    <section id="section-ideal-weight" class="block h-full p-10">
+      <h1 class="text-4xl font-bold mb-10 text-center">Calculate Your Ideal Weight</h1>
+      <div class="flex flex-col md:flex-row w-full">
+        <div class=" form-control w-full md:w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
+          <!-- get age for iw -->
+          <div class="w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-2/3">
+              <span class="w-28 font-semibold">Age</span>
+              <input id="iw-age" type="number" placeholder="20" class="input input-bordered w-full" />
+            </label>
+            <h1 class="text-center w-1/3 font-semibold">Ages: 2-120</h1>
+          </div>
+          <!-- get gender for iw -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 h-12  font-semibold">Gender</span>
+              <div class="w-full flex flex-row justify-center items-center">
+                <div class="w-full pl-4 flex justify-around">
+                  <div   id="iw-gender">
+                    <input type="radio" id="iw-gender-male" name="iw-gender" checked>
+                    <label for="iw-gender-male" class="font-semibold">Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="iw-gender-female" name="iw-gender">
+                    <label for="iw-gender-female" class="font-semibold">Female</label>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <!-- get height for iw -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-26  font-semibold">Height</span>
+              <input id="iw-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" value="5"/>
+              <input id="iw-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" value="4"/>
+            </label>
+          </div>
+
+          <h1 id="iw-error" class="text-red-600 text-sm font-semibold"></h1>
+          <button id="calculate-iw" onclick="calculateIW()"
+            class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate Ideal Weight</button>
+        </div>
+
+        <div id="iw-result" class="w-full md:w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 mt-6 md:mt-0 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">According to B. J. Devine Formula <br/>Your Ideal Weight: <span  id="place-iw" class="text-neutral">_</span> kg</h1>
+        </div>
+      </div>
     </section>
-    <section id="section-calorie" class="block h-full bg-secondary">
-      <h1 class="text-4xl font-bold">Calculate Your CALORIE</h1>
+
+
+    <section id="section-calorie" class="block h-full p-10">
+      <h1 class="text-4xl font-bold mb-10 text-center">Calculate Your Calorie</h1>
+      <div class="flex flex-col md:flex-row w-full">
+        <div class="form-control w-full md:w-1/2 flex flex-col p-8 bg-gray-200 rounded-2xl mx-2">
+          <!-- get age for bmr -->
+          <div class="w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-2/3">
+              <span class="w-28 font-semibold">Age</span>
+              <input id="calorie-age" type="number" placeholder="20" class="input input-bordered w-full" />
+            </label>
+            <h1 class="text-center w-1/3 font-semibold">Ages: 15-80</h1>
+          </div>
+          <!-- get gender for bmr -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 h-12  font-semibold">Gender</span>
+              <div class="w-full flex flex-row justify-center items-center">
+                <div class="w-full pl-4 flex justify-around">
+                  <div>
+                    <input type="radio" id="calorie-gender-male" name="calorie-gender" checked>
+                    <label for="calorie-gender-male" class="font-semibold">Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="calorie-gender-female" name="calorie-gender">
+                    <label for="calorie-gender-female" class="font-semibold">Female</label>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <!-- get height for bmr -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-26  font-semibold">Height</span>
+              <input id="calorie-height-feet" type="number" placeholder="feet" class="input input-bordered w-full" value='5'/>
+              <input id="calorie-height-inch" type="number" placeholder="inch" class="input input-bordered w-full" value="4"/>
+            </label>
+          </div>
+          <!-- get bmi weight -->
+          <div class=" w-full flex flex-row justify-center items-center">
+            <label class="input-group my-2 w-full">
+              <span class="w-24 font-semibold">Weight</span>
+              <input id="calorie-weight" type="number" placeholder="kg" class="input input-bordered w-full" value='70'/>
+            </label>
+          </div>
+          <h1 id="calorie-error" class="text-red-600 text-sm font-semibold"></h1>
+          <button id="calculate-calorie" onclick="calculateCalorie()"
+            class="btn btn-accent mt-4 px-10 w-full hover:text-white hover:bg-gray-800">Calculate Calorie Per Day</button>
+        </div>
+
+        <div id="calorie-result" class="w-full md:w-1/2 p-8 bg-gray-200 rounded-2xl mx-2 mt-6 md:mt-0 flex flex-col justify-center items-center">
+          <h1 class="text-2xl font-bold text-seconday">Your Calorie: <span  id="place-calorie" class="text-neutral">_</span> Calories/day</h1>
+        </div>
+      </div>
     </section>
   </main>
   <script src="app.js"></script>

@@ -79,7 +79,7 @@ const calculateBMI = () => {
   const bmiHeightInch = +document.getElementById('bmi-height-inch').value;
   const bmiWeight = +document.getElementById('bmi-weight').value;
   if (!bmiHeightFeet || !bmiHeightInch || !bmiWeight) {
-    bmiError.innerText = "Please complete all the fields!";
+    bmiError.innerText = "Please Fill Required Fields!";
     return;
   } else {
     bmiError.innerText = "";
@@ -92,8 +92,75 @@ const calculateBMI = () => {
     const bmiPlaceholder = document.getElementById("category-bmi");
     if (bmi > c.lower && bmi < c.upper) {
       bmiPlaceholder.innerText = `You BMI is ${c.category} as per WHO recommended`;
-      document.getElementById('bmi-result').classList= `${c.color} w-1/2 p-8 rounded-2xl mx-2 flex flex-col justify-center items-center`;
+      document.getElementById('bmi-result').classList = `${c.color} w-1/2 p-8 rounded-2xl mx-2 flex flex-col justify-center items-center`;
     }
   });
+  return;
+};
+
+const calculateBMR = () => {
+  const bmrError = document.getElementById('bmr-error');
+  const bmrAge = +document.getElementById('bmr-age').value;
+  const bmrWeight = +document.getElementById('bmr-weight').value;
+  const bmrHeightFeet = +document.getElementById('bmr-height-feet').value;
+  const bmrHeightInch = +document.getElementById('bmr-height-inch').value;
+  const bmrGenderMale = document.getElementById('bmr-gender-male').checked;
+  if (!bmrHeightFeet || !bmrHeightInch || !bmrAge || !bmrWeight) {
+    bmrError.innerText = "Please Fill Required Fields!";
+    return;
+  } else {
+    bmrError.innerText = "";
+  }
+  const heightInCm = (bmrHeightFeet * 12 + bmrHeightInch) * 2.54;
+  let bmr = 0
+  if (bmrGenderMale) bmr = 10 * bmrWeight + 6.25 * heightInCm - 5 * bmrAge + 5;
+  else bmr = 10 * bmrWeight + 6.25 * heightInCm - 5 * bmrAge - 161;
+  document.getElementById('place-bmr').innerText = bmr;
+  return;
+};
+
+const calculateIW = () => {
+  const iwError = document.getElementById('iw-error');
+  const iwHeightFeet = +document.getElementById('iw-height-feet').value;
+  const iwHeightInch = +document.getElementById('iw-height-inch').value;
+  const iwGenderMale = document.getElementById('iw-gender-male').checked;
+  const placeIW = document.getElementById('place-iw');
+  if (!iwHeightFeet || !iwHeightInch) {
+    iwError.innerText = "Please Fill Required Fields!";
+    return;
+  } else {
+    iwError.innerText = "";
+  }
+  const iwHeight = iwHeightFeet * 12 + iwHeightInch;
+  let man = 50;
+  let woman = 45.5;
+  if (iwGenderMale) {
+    if (iwHeight > 60) man = man + (iwHeight - 66) * 2.3;
+    placeIW.innerText = man;
+  } else {
+    if (iwHeight > 60) woman = woman + (iwHeight - 66) * 2.3;
+    placeIW.innerText = woman;
+  }
+  return;
+};
+
+const calculateCalorie = () => {
+  const calorieError = document.getElementById('calorie-error');
+  const calorieAge = +document.getElementById('calorie-age').value;
+  const calorieWeight = +document.getElementById('calorie-weight').value;
+  const calorieHeightFeet = +document.getElementById('calorie-height-feet').value;
+  const calorieHeightInch = +document.getElementById('calorie-height-inch').value;
+  const calorieGenderMale = document.getElementById('calorie-gender-male').checked;
+  if (!calorieHeightFeet || !calorieHeightInch || !calorieAge || !calorieWeight) {
+    calorieError.innerText = "Please Fill Required Fields!";
+    return;
+  } else {
+    calorieError.innerText = "";
+  }
+  const heightInCm = (calorieHeightFeet * 12 + calorieHeightInch) * 2.54;
+  let calorie = 0
+  if (calorieGenderMale) calorie = 10 * calorieWeight + 6.25 * heightInCm - 5 * calorieAge + 5;
+  else calorie = 9.247 * calorieWeight + 3.098 * heightInCm - 4.33 * calorieAge + 447.593;
+  document.getElementById('place-calorie').innerText = calorie;
   return;
 };
